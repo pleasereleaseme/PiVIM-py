@@ -1,5 +1,5 @@
-"""
-Module for controlling the Pimoroni Display-O-Tron
+"""Module for controlling the Pimoroni Display-O-Tron.
+
 """
 import time
 import dothat.lcd as lcd
