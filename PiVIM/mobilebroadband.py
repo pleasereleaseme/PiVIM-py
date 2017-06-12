@@ -12,7 +12,6 @@ import json
 import requests
 import ptvsd # pylint: disable=unused-import
 
-
 class MobileBroadband:
     """Class for working with ZTE USB Modems"""
     host = '192.168.0.1'
