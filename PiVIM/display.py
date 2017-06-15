@@ -58,8 +58,7 @@ def set_right_bottom(message):
     lcd.write(message)
 
 def set_cursor_right(message, row):
-    """
-    Calculates first position of a string that needs to be
+    """Calculates first position of a string that needs to be
     right-aligned based on the display being 16 characters wide
     """
     print(len(message))
