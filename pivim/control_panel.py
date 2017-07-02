@@ -83,15 +83,15 @@ def position_cursor_left(row):
     lcd.set_cursor_position(COL_LEFT_INDEX, row)
 
 @touch.on(touch.LEFT)
-def backlight_off(channel, event): # pylint: disable=unused-argument
-    """Configures the left touch button to turn the backlight off."""
-    backlight.off()
-
-@touch.on(touch.RIGHT)
 def backlight_on(channel, event): # pylint: disable=unused-argument
     """Configures the right touch button to turn the backlight on."""
     display_config()
     backlight_auto_off()
+
+@touch.on(touch.RIGHT)
+def backlight_off(channel, event): # pylint: disable=unused-argument
+    """Configures the left touch button to turn the backlight off."""
+    backlight.off()    
 
 def backlight_auto_off():
     """Create a new thread from which to call a countdown timer
