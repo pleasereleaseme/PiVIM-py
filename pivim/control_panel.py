@@ -1,4 +1,5 @@
 """Module for controlling the Pimoroni Display-O-Tron.
+Display consists of 3 rows by 16 columns.
 
 """
 import time
@@ -7,9 +8,11 @@ from dothat import lcd
 from dothat import backlight
 from dothat import touch
 
-ROW_TOP = 0
-ROW_MID = 1
-ROW_BOTTOM = 2
+ROW_TOP_INDEX = 0
+ROW_MID_INDEX = 1
+ROW_BOTTOM_INDEX = 2
+COL_LEFT_INDEX = 0
+COL_RIGHT_INDEX = 15
 
 BACKLIGHT_AUTO_OFF_DELAY = 30
 
@@ -34,32 +37,33 @@ def clear_screen():
 
 def set_left_top(message):
     """Sets message at top left."""
-    set_cursor_left(ROW_TOP)
+    set_cursor_left(ROW_TOP_INDEX)
     lcd.write(message)
 
 def set_left_middle(message):
     """Sets message at middle left."""
-    set_cursor_left(ROW_MID)
+    set_cursor_left(ROW_MID_INDEX)
     lcd.write(message)
 
 def set_left_bottom(message):
     """Sets message at bottom left."""
-    set_cursor_left(ROW_BOTTOM)
+    set_cursor_left(ROW_BOTTOM_INDEX)
     lcd.write(message)
 
 def set_right_top(message):
     """Sets message at top right."""
-    set_cursor_right(message, ROW_TOP)
+    set_cursor_right(message, ROW_TOP_INDEX
+)
     lcd.write(message)
 
 def set_right_middle(message):
     """Sets non-null message at middle right."""
-    set_cursor_right(message, ROW_MID)
+    set_cursor_right(message, ROW_MID_INDEX)
     lcd.write(message)
 
 def set_right_bottom(message):
     """Sets message at bottom right."""
-    set_cursor_right(message, ROW_BOTTOM)
+    set_cursor_right(message, ROW_BOTTOM_INDEX)
     lcd.write(message)
 
 def set_cursor_right(message, row):
@@ -67,15 +71,15 @@ def set_cursor_right(message, row):
     right-aligned based on the display being 16 characters wide.
     """
     if not message:             # If the message is empty just set the cursor to the last column
-        cursor_position = 15
+        cursor_position = COL_RIGHT_INDEX
     else:                       # Otherwise calculate starting position
-        cursor_position = 15 - len(message)
+        cursor_position = COL_RIGHT_INDEX - len(message)
 
     lcd.set_cursor_position(cursor_position, row)
 
 def set_cursor_left(row):
     """Sets first position of a left-aligned string."""
-    lcd.set_cursor_position(0, row)
+    lcd.set_cursor_position(COL_LEFT_INDEX, row)
 
 @touch.on(touch.LEFT)
 def backlight_off(channel, event): # pylint: disable=unused-argument
@@ -99,34 +103,3 @@ def backlight_countdown():
     """Turns the backlight off after the specified period has elapsed"""
     time.sleep(BACKLIGHT_AUTO_OFF_DELAY)
     backlight.off()
-
-def debug_module():
-    """
-    Debug code for testing module is functioning properly.
-    Uncomment ptvsd lines to enable remote debugging from Visual Studio
-    Use format tcp://pi@hostname.local:5678 or
-    tcp://pi@ipaddress:5678 when attaching to the debugger.
-    """
-
-    # ptvsd.enable_attach(secret='pi')
-    # ptvsd.wait_for_attach()
-
-    init()
-
-    try:
-        while True:
-            for i in range(10):
-                set_left_top("LT{0}".format(i))
-                set_right_top("RT{0}".format(i))
-                set_left_middle("LM{0}".format(i))
-                set_right_middle("RM{0}".format(i))
-                set_left_bottom("LB{0}".format(i))
-                set_right_bottom("RB{0}".format(i))
-
-                time.sleep(1)
-
-    except KeyboardInterrupt:
-        destroy()
-
-if __name__ == '__main__':
-    debug_module()

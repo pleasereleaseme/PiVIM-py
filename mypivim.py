@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """DocString"""
 import time
-from PiVIM.mobilebroadband import MobileBroadband
-from PiVIM import display
+from pivim.mobilebroadband import MobileBroadband
+from pivim import control_panel
 
 def main():
     """Evolving picture of how all the different code modules will work together"""
-    display.init()
+    control_panel.init()
 
     try:
         while True:
@@ -16,14 +16,14 @@ def main():
             signalbar = mobile.signalbar
             network_type = mobile.network_type
 
-            display.clear_screen()
-            display.set_right_top(network_type)
-            display.set_right_middle('*' * int(signalbar))
+            control_panel.clear_screen()
+            control_panel.set_right_top(network_type)
+            control_panel.set_right_middle('*' * int(signalbar))
 
             time.sleep(10)
 
     except KeyboardInterrupt:
-        display.destroy()
+        control_panel.destroy()
 
 if __name__ == '__main__':
     main()
