@@ -1,12 +1,14 @@
-"""Module for controlling the Pimoroni Display-O-Tron.
+"""Module for controlling the Pimoroni Display-O-Tron HAT.
 Display consists of 3 rows by 16 columns.
-
 """
 import time
 from threading import Thread
-from dothat import lcd
-from dothat import backlight
-from dothat import touch
+try: # Stop pylint genrating and error for libraries not availble on Windows or other OSes
+    from dothat import lcd
+    from dothat import backlight
+    from dothat import touch
+except ImportError:
+    pass
 
 ROW_TOP_INDEX = 0
 ROW_MID_INDEX = 1
@@ -16,15 +18,15 @@ COL_RIGHT_INDEX = 15
 
 BACKLIGHT_AUTO_OFF_DELAY = 30
 
-def init():
-    """Sets the display to initial values."""
+def display_config():
+    """Sets the display to display_configial values."""
     lcd.set_contrast(50)
 
-    # Backlight is set to be on initially but to turn off after a delay
+    # Backlight is set to be on display_configially but to turn off after a delay
     backlight.hue(0.43)
     backlight_auto_off()
 
-def destroy():
+def display_off():
     """Turns the display off."""
     backlight.off()
     lcd.clear()
@@ -35,38 +37,37 @@ def clear_screen():
     """
     lcd.clear()
 
-def set_left_top(message):
+def message_left_top(message):
     """Sets message at top left."""
-    set_cursor_left(ROW_TOP_INDEX)
+    position_cursor_left(ROW_TOP_INDEX)
     lcd.write(message)
 
-def set_left_middle(message):
+def message_left_middle(message):
     """Sets message at middle left."""
-    set_cursor_left(ROW_MID_INDEX)
+    position_cursor_left(ROW_MID_INDEX)
     lcd.write(message)
 
-def set_left_bottom(message):
+def message_left_bottom(message):
     """Sets message at bottom left."""
-    set_cursor_left(ROW_BOTTOM_INDEX)
+    position_cursor_left(ROW_BOTTOM_INDEX)
     lcd.write(message)
 
-def set_right_top(message):
+def message_right_top(message):
     """Sets message at top right."""
-    set_cursor_right(message, ROW_TOP_INDEX
-)
+    position_cursor_right(message, ROW_TOP_INDEX)
     lcd.write(message)
 
-def set_right_middle(message):
+def message_right_middle(message):
     """Sets non-null message at middle right."""
-    set_cursor_right(message, ROW_MID_INDEX)
+    position_cursor_right(message, ROW_MID_INDEX)
     lcd.write(message)
 
-def set_right_bottom(message):
+def message_right_bottom(message):
     """Sets message at bottom right."""
-    set_cursor_right(message, ROW_BOTTOM_INDEX)
+    position_cursor_right(message, ROW_BOTTOM_INDEX)
     lcd.write(message)
 
-def set_cursor_right(message, row):
+def position_cursor_right(message, row):
     """Calculates first position of a string that needs to be
     right-aligned based on the display being 16 characters wide.
     """
@@ -77,7 +78,7 @@ def set_cursor_right(message, row):
 
     lcd.set_cursor_position(cursor_position, row)
 
-def set_cursor_left(row):
+def position_cursor_left(row):
     """Sets first position of a left-aligned string."""
     lcd.set_cursor_position(COL_LEFT_INDEX, row)
 
@@ -89,7 +90,7 @@ def backlight_off(channel, event): # pylint: disable=unused-argument
 @touch.on(touch.RIGHT)
 def backlight_on(channel, event): # pylint: disable=unused-argument
     """Configures the right touch button to turn the backlight on."""
-    init()
+    display_config()
     backlight_auto_off()
 
 def backlight_auto_off():
