@@ -16,7 +16,7 @@ ROW_BOTTOM_INDEX = 2
 COL_LEFT_INDEX = 0
 COL_RIGHT_INDEX = 15
 
-BACKLIGHT_AUTO_OFF_DELAY = 30
+BACKLIGHT_AUTO_OFF_DELAY = 10
 
 def display_config():
     """Sets the display to display_configial values."""
