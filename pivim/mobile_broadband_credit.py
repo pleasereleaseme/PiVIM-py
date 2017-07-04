@@ -26,6 +26,8 @@ def main():
     result = session_requests.get(URL, headers = dict(referer = URL))
     tree = html.fromstring(result.content)
 
+    print(tree)
+
 
 if __name__ == '__main__':
     main()
