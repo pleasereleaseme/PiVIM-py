@@ -84,13 +84,13 @@ def position_cursor_left(row):
 
 @touch.on(touch.LEFT)
 def backlight_on(channel, event): # pylint: disable=unused-argument
-    """Configures the right touch button to turn the backlight on."""
+    """Configures the left touch button to turn the backlight on."""
     display_config()
     backlight_auto_off()
 
 @touch.on(touch.RIGHT)
 def backlight_off(channel, event): # pylint: disable=unused-argument
-    """Configures the left touch button to turn the backlight off."""
+    """Configures the right touch button to turn the backlight off."""
     backlight.off()    
 
 def backlight_auto_off():
