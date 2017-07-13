@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
 """DocString"""
 import time
-from pivim.mobileb_roadband import MobileBroadband
-from pivim import control_panel
+from pivim import mobile_broadband as mb
+from pivim import control_panel as cp
 
 def main():
     """Evolving picture of how all the different code modules will work together"""
-    control_panel.init()
+    cp.display_config()
 
     try:
         while True:
-            mobile = MobileBroadband()
+            mobile = mb.MobileBroadband()
             mobile.get_status()
 
             signalbar = mobile.signalbar
             network_type = mobile.network_type
 
-            control_panel.clear_screen()
-            control_panel.set_right_top(network_type)
-            control_panel.set_right_middle('*' * int(signalbar))
+            cp.clear_screen()
+            cp.message_right_top(network_type)
+            cp.message_right_middle('*' * int(signalbar))
 
             time.sleep(10)
 
     except KeyboardInterrupt:
-        control_panel.destroy()
+        cp.display_off()
 
 if __name__ == '__main__':
     main()
