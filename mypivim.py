@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """DocString"""
 import time
-from pivim.mobilebroadband import MobileBroadband
+from pivim.mobileb_roadband import MobileBroadband
 from pivim import control_panel
 
 def main():

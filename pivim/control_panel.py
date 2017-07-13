@@ -91,7 +91,7 @@ def backlight_on(channel, event): # pylint: disable=unused-argument
 @touch.on(touch.RIGHT)
 def backlight_off(channel, event): # pylint: disable=unused-argument
     """Configures the right touch button to turn the backlight off."""
-    backlight.off()    
+    backlight.off()
 
 def backlight_auto_off():
     """Create a new thread from which to call a countdown timer
