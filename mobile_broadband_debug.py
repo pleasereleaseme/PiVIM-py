@@ -2,6 +2,7 @@
 """
 
 from pivim import mobile_broadband as mb
+import ptvsd # pylint: disable=unused-import
 
 def main():
     """

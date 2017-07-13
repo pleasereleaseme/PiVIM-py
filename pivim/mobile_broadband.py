@@ -10,7 +10,6 @@ device but this has not been tested.
 
 import json
 import requests
-import ptvsd # pylint: disable=unused-import
 
 class MobileBroadband:
     """Class for working with ZTE USB Modems"""

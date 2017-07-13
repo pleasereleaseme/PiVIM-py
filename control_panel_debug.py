@@ -3,6 +3,7 @@
 
 import time
 from pivim import control_panel as cp
+import ptvsd # pylint: disable=unused-import
 
 def main():
     """Uncomment ptvsd lines to enable remote debugging from Visual Studio
