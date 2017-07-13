@@ -1,7 +1,7 @@
 """Debug code for testing module is functioning properly.
 """
 
-from pivim import mobile_broadband as mb
+from pivim import mobile_broadband as mobile_broadband
 import ptvsd # pylint: disable=unused-import
 
 def main():
@@ -15,15 +15,17 @@ def main():
     # ptvsd.enable_attach(secret='pi')
     # ptvsd.wait_for_attach()
 
-    mobile = mb.MobileBroadband()
-    mobile.get_status()
+    mb = mobile_broadband.MobileBroadband() # pylint: disable=invalid-name
+    mb.get_status()
 
-    signal = mobile.signalbar
-    network_type = mobile.network_type
+    signal = mb.signalbar
+    network_type = mb.network_type
+    network_provider = mb.network_provider
 
     print(signal)
     print(network_type)
-    print(mobile.is_connected())
+    print(network_provider)
+    print(mb.is_connected())
 
 if __name__ == '__main__':
     main()

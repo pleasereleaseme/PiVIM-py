@@ -20,6 +20,7 @@ class MobileBroadband:
     def __init__(self):
         self.signalbar = ""
         self.network_type = ""
+        self.network_provider = ""
 
     def get_status(self):
         """
@@ -65,6 +66,7 @@ class MobileBroadband:
 
         self.signalbar = res["signalbar"]
         self.network_type = res["network_type"]
+        self.network_provider = res["network_provider"]
 
     @staticmethod
     def is_connected():
