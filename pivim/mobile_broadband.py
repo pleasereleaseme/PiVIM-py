@@ -14,8 +14,8 @@ import requests
 class MobileBroadband:
     """Class for working with ZTE USB Modems"""
     host = '192.168.0.1'
-    url = 'http://%s/goform/goform_get_cmd_process' % host
-    hdrs = {'Referer': 'http://%s/' % host}
+    url = 'http://{}/goform/goform_get_cmd_process'.format(host)
+    hdrs = {'Referer': 'http://{}/'.format(host)}
 
     def __init__(self):
         self.signalbar = ""
