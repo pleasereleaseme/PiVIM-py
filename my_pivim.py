@@ -2,7 +2,7 @@
 """DocString"""
 import time
 from pivim import mobile_broadband as mb
-from pivim import control_panel as cp
+#from pivim import control_panel as cp
 from pivim import data_portal as dp
 from pivim import temperature as t
 
