@@ -1,6 +1,7 @@
 """Debug code for testing module is functioning properly.
 """
-
+from random import randint
+import time
 from pivim import data_portal as dp
 import ptvsd # pylint: disable=unused-import
 
@@ -13,7 +14,9 @@ def main():
     # ptvsd.enable_attach(secret='pi')
     # ptvsd.wait_for_attach()
 
-    dp.upload_temp_data()
+    while True:
+        dp.upload_data("Temperature", randint(25, 30))
+        time.sleep(1)
 
 if __name__ == '__main__':
     main()
