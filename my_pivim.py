@@ -23,7 +23,7 @@ def main():
             cp.clear_screen()
             cp.message_right_top(network_type)
             cp.message_right_middle('*' * int(signalbar))
-            cp.message_right_middle(latest_temp)
+            cp.message_left_middle(latest_temp)
 
             dp.upload_data("Temperature", latest_temp)
             time.sleep(5)
