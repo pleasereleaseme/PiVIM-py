@@ -18,7 +18,7 @@ def main():
             signalbar = mobile.signalbar
             network_type = mobile.network_type
 
-            latest_temp = t.read_temp()
+            latest_temp = 20 # t.read_temp()
 
             cp.clear_screen()
             cp.message_right_top(network_type)
