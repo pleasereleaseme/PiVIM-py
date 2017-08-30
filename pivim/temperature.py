@@ -29,4 +29,4 @@ def read_temp():
     if equals_pos != -1:
         temp_string = lines[1][equals_pos+2:]
         temp_c = float(temp_string) / 1000.0
-        return round(temp_c, 1)
+        return temp_c
