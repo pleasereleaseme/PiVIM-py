@@ -11,7 +11,7 @@ def main():
     cp.display_config()
 
     highest_temp = 0
-    lowest_temp = 0
+    lowest_temp = 100
 
     try:
         while True:
