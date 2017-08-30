@@ -4,7 +4,7 @@ import time
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
-from pivim import temperature as t
+#from pivim import temperature as t
 
 def main():
     """Evolving picture of how all the different code modules will work together"""
