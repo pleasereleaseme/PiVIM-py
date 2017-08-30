@@ -28,6 +28,7 @@ def main():
             cp.clear_screen()
             cp.message_right_top(network_type)
             cp.message_right_middle('*' * int(signalbar))
+            cp.message_left_top(str(lowest_temp))
             cp.message_left_middle(str(latest_temp))
             cp.message_left_bottom(str(highest_temp))
 
