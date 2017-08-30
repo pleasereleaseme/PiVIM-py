@@ -11,6 +11,7 @@ def main():
     cp.display_config()
 
     highest_temp = 0
+    lowest_temp = 0
 
     try:
         while True:
@@ -21,6 +22,7 @@ def main():
             network_type = mobile.network_type
 
             latest_temp = t.read_temp()
+            lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
             highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
 
             cp.clear_screen()
