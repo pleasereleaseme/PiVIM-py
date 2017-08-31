@@ -17,7 +17,7 @@ def main():
 
     while True:
         try:
-
+            mobile.get_status()
             signalbar = mobile.signalbar
             network_type = mobile.network_type
 
