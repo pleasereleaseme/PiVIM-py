@@ -7,7 +7,7 @@ from pivim import temperature as t
 
 def main():
     """Evolving picture of how all the different code modules will work together"""
-    
+
     highest_temp = 0
     lowest_temp = 100
 
@@ -17,9 +17,6 @@ def main():
 
     while True:
         try:
-            latest_temp = round(t.read_temp(),0)
-            lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
-            highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
 
             signalbar = mobile.signalbar
             network_type = mobile.network_type
@@ -36,9 +33,8 @@ def main():
             cp.message_left_bottom("H: " + str(highest_temp))
 
             dp.upload_data("Temperature", latest_temp)
-        
+
         except KeyboardInterrupt:
-        
             cp.display_off()
 
 if __name__ == '__main__':
