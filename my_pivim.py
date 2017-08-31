@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """DocString"""
-import time
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
@@ -9,10 +8,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 def main():
     """Evolving picture of how all the different code modules will work together"""
+    
     cp.display_config()
-
-    global highest_temp = 0
-    global lowest_temp = 100
 
     scheduler = BackgroundScheduler()
 
@@ -24,6 +21,9 @@ def main():
         cp.display_off()
 
 def do_work():
+    highest_temp = 0
+    lowest_temp = 100
+
     mobile = mb.MobileBroadband()
     mobile.get_status()
 
