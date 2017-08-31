@@ -4,7 +4,6 @@ from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
 from pivim import temperature as t
-from apscheduler.schedulers.background import BackgroundScheduler
 
 def main():
     """Evolving picture of how all the different code modules will work together"""
@@ -24,8 +23,9 @@ def do_work():
     highest_temp = 0
     lowest_temp = 100
 
-    mobile = mb.MobileBroadband()
-    mobile.get_status()
+            latest_temp = round(t.read_temp(),0)
+            lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
+            highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
 
     signalbar = mobile.signalbar
     network_type = mobile.network_type
