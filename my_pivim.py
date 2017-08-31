@@ -8,40 +8,38 @@ from pivim import temperature as t
 def main():
     """Evolving picture of how all the different code modules will work together"""
     
-    cp.display_config()
-
-    scheduler = BackgroundScheduler()
-
-    try:
-        scheduler.add_job(do_work, 'interval', seconds=5)
-        scheduler.start()
-    except KeyboardInterrupt:
-        scheduler.shutdown()
-        cp.display_off()
-
-def do_work():
     highest_temp = 0
     lowest_temp = 100
 
+    cp.display_config()
+
+    mobile = mb.MobileBroadband()
+
+    while True:
+        try:
             latest_temp = round(t.read_temp(),0)
             lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
             highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
 
-    signalbar = mobile.signalbar
-    network_type = mobile.network_type
+            signalbar = mobile.signalbar
+            network_type = mobile.network_type
 
-    latest_temp = round(t.read_temp() -0.5)
-    lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
-    highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
+            latest_temp = round(t.read_temp() -0.5)
+            lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
+            highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
 
-    cp.clear_screen()
-    cp.message_right_top(network_type)
-    cp.message_right_middle('*' * int(signalbar))
-    cp.message_left_top("L: " + str(lowest_temp))
-    cp.message_left_middle("N: " + str(latest_temp))
-    cp.message_left_bottom("H: " + str(highest_temp))
+            cp.clear_screen()
+            cp.message_right_top(network_type)
+            cp.message_right_middle('*' * int(signalbar))
+            cp.message_left_top("L: " + str(lowest_temp))
+            cp.message_left_middle("N: " + str(latest_temp))
+            cp.message_left_bottom("H: " + str(highest_temp))
 
-    dp.upload_data("Temperature", latest_temp)
+            dp.upload_data("Temperature", latest_temp)
+        
+        except KeyboardInterrupt:
+        
+            cp.display_off()
 
 if __name__ == '__main__':
     main()
