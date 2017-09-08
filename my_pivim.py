@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """DocString"""
+import time
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
@@ -32,7 +33,9 @@ def main():
             cp.message_left_middle("N: " + str(latest_temp))
             cp.message_left_bottom("H: " + str(highest_temp))
 
-            dp.upload_data("Temperature", latest_temp)
+            dp.upload_data("T", latest_temp)
+
+            time.sleep(5)
 
         except KeyboardInterrupt:
             cp.display_off()
