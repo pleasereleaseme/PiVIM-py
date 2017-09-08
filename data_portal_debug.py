@@ -15,8 +15,11 @@ def main():
     # ptvsd.wait_for_attach()
 
     while True:
-        dp.upload_data("T", round(t.read_temp() -0.5))
-        time.sleep(5)
+        try:
+            dp.upload_data("T", round(t.read_temp() -0.5))
+            time.sleep(5)
+        except KeyboardInterrupt:
+            pass
 
 if __name__ == '__main__':
     main()
