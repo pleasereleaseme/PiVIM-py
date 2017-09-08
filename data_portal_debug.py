@@ -16,7 +16,9 @@ def main():
 
     while True:
         try:
-            dp.upload_data("T", round(t.read_temp() -0.5))
+            latest_temp = round(t.read_temp() -0.5)
+            dp.upload_data("T", latest_temp)
+            print(latest_temp)
             time.sleep(5)
         except KeyboardInterrupt:
             pass
