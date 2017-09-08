@@ -1,4 +1,5 @@
 """Module for controlling the Pimoroni Display-O-Tron HAT.
+
 Display consists of 3 rows by 16 columns.
 """
 import time

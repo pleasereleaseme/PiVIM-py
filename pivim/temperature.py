@@ -1,5 +1,5 @@
 """
-The
+Module for reading temperature from the raspbery Pi 1-wire interface.
 """
 import os
 import glob
@@ -13,14 +13,14 @@ DEVICE_FOLDER = glob.glob(BASE_DIR + '28*')[0]
 DEVICE_FILE = DEVICE_FOLDER + '/w1_slave'
 
 def read_temp_raw():
-    """The"""
+    """Read the raw data."""
     file_name = open(DEVICE_FILE, 'r')
     lines = file_name.readlines()
     file_name.close()
     return lines
 
 def read_temp():
-    """The"""
+    """Convert the raw data into a temperature output."""
     lines = read_temp_raw()
     while lines[0].strip()[-3:] != 'YES':
         time.sleep(0.2)
