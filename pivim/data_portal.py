@@ -6,7 +6,7 @@ from ISStreamer.Streamer import Streamer
 
 def upload_data(stream_name, temperature):
     """The """
-    today = dt.date.today()
+    today = dt.date.ctime()
 
     streamer = Streamer(bucket_name="PiViM-{}".format(today), \
                         bucket_key="pivim_{}".format(today), \
