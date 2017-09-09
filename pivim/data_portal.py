@@ -5,7 +5,7 @@ import datetime as dt
 from ISStreamer.Streamer import Streamer
 
 def upload_temperature_data(access_key, temperature):
-    """Stream temperature data using supplie module."""
+    """Stream temperature data using supplied module."""
     today = dt.date.today()
 
     # Append date in order to identify the latest stream in the Initial State user interface
