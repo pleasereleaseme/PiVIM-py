@@ -8,7 +8,7 @@ def upload_temperature_data(access_key, temperature):
     """Stream temperature data using supplie module."""
     today = dt.date.today()
 
-    # Tag on date in order to identify the latest stream in the Initial State user interface
+    # Append date in order to identify the latest stream in the Initial State user interface
     streamer = Streamer(bucket_name="PiViM-{}".format(today), \
                         bucket_key="pivim_{}".format(today), \
                         access_key=access_key)
