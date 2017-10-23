@@ -2,6 +2,7 @@
 """DocString"""
 import sys
 import time
+from pivim import safe_shutdown as ss
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
@@ -12,6 +13,8 @@ def main(access_key):
 
     highest_temp = 0
     lowest_temp = 100
+
+    ss.init()
 
     cp.display_config()
 
