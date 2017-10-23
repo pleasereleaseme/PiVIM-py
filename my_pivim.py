@@ -2,8 +2,6 @@
 """DocString"""
 import sys
 import time
-from threading import Thread
-from pivim import safe_shutdown as ss
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
