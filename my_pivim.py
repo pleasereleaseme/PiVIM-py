@@ -15,9 +15,6 @@ def main(access_key):
     highest_temp = 0
     lowest_temp = 100
 
-    thread = Thread(target=ss)
-    thread.start()
-
     cp.display_config()
 
     mobile = mb.MobileBroadband()
