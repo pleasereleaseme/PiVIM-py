@@ -43,6 +43,9 @@ def clear_screen():
     """
     lcd.clear()
 
+    global SHUTDOWN_DELAY_COUNT
+    SHUTDOWN_DELAY_COUNT = 0
+
 def message_left_top(message):
     """Sets message at top left."""
     position_cursor_left(ROW_TOP_INDEX)
@@ -122,5 +125,6 @@ def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
         display_off()
         os.system("sudo poweroff")
     else:
-        clear_screen()
-        message_left_middle('Powering down in {}'.format(SHUTDOWN_DELAY_COUNT))
+        lcd.clear()
+        message_left_middle('Powering down in {}.'.format(SHUTDOWN_DELAY_COUNT))
+        message_left_bottom('Release button to cancel.')
