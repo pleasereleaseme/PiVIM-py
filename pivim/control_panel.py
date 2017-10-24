@@ -44,7 +44,7 @@ def clear_screen():
     """
     lcd.clear()
 
-    global SHUTDOWN_DELAY_COUNT
+    global SHUTDOWN_DELAY_COUNT # pylint: disable=W0603
     SHUTDOWN_DELAY_COUNT = SHUTDOWN_DELAY
 
 def message_left_top(message):
@@ -118,10 +118,9 @@ def backlight_countdown():
 @touch.on(touch.BUTTON)
 def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
     """"""
-    global SHUTDOWN_DELAY_COUNT
+    global SHUTDOWN_DELAY_COUNT # pylint: disable=W0603
 
     SHUTDOWN_DELAY_COUNT -= 2
-    print(SHUTDOWN_DELAY_COUNT)
     if SHUTDOWN_DELAY_COUNT == 0:
         display_off()
         os.system("sudo poweroff")
