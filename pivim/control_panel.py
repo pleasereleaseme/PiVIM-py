@@ -122,7 +122,7 @@ def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
 
     SHUTDOWN_DELAY_COUNT -= 2
     print(SHUTDOWN_DELAY_COUNT)
-    if SHUTDOWN_DELAY_COUNT == 2:
+    if SHUTDOWN_DELAY_COUNT == 0:
         display_off()
         os.system("sudo poweroff")
     else:
