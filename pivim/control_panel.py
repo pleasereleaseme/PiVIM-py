@@ -120,7 +120,7 @@ def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
     """"""
     global SHUTDOWN_DELAY_COUNT
 
-    SHUTDOWN_DELAY_COUNT +- 2
+    SHUTDOWN_DELAY_COUNT =- 2
 
     if SHUTDOWN_DELAY_COUNT == 0:
         display_off()
