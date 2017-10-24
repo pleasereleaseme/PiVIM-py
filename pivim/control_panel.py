@@ -20,7 +20,7 @@ COL_RIGHT_INDEX = 15
 
 BACKLIGHT_AUTO_OFF_DELAY = 10
 
-SHUTDOWN_DELAY = 30
+SHUTDOWN_DELAY = 48
 SHUTDOWN_DELAY_COUNT = SHUTDOWN_DELAY
 
 def display_config():
@@ -117,14 +117,19 @@ def backlight_countdown():
 
 @touch.on(touch.BUTTON)
 def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
-    """"""
+    """Configures the joystick button to shutdown the OS after a long press.
+        This function makes use of the touch.enable_repeat(True) function which captures a long
+        press as a series of individual presses. Each 'press' decrements a global counter.
+        Each 'press' lasts about 0.3 second so everything is multiplied by 3 to
+        simulate seconds.
+    """
     global SHUTDOWN_DELAY_COUNT # pylint: disable=W0603
 
-    SHUTDOWN_DELAY_COUNT -= 2
+    SHUTDOWN_DELAY_COUNT -= 3
     if SHUTDOWN_DELAY_COUNT == 0:
         display_off()
         os.system("sudo poweroff")
     else:
         lcd.clear()
-        message_left_middle('Off in {}'.format(int(round(SHUTDOWN_DELAY_COUNT/2))))
+        message_left_middle('Off in {}'.format(int(round(SHUTDOWN_DELAY_COUNT/3))))
         message_left_bottom('Release = cancel')
