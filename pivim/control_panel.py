@@ -123,5 +123,4 @@ def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
         os.system("sudo poweroff")
     else:
         clear_screen()
-        backlight.on()
         message_left_middle('Powering down in {}'.format(SHUTDOWN_DELAY_COUNT))
