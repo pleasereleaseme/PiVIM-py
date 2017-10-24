@@ -44,6 +44,9 @@ def clear_screen():
     """
     lcd.clear()
 
+    """Reset the shutdown counter otherwise the value persists if the shutdown
+        is aborted.
+    """
     global SHUTDOWN_DELAY_COUNT # pylint: disable=W0603
     SHUTDOWN_DELAY_COUNT = SHUTDOWN_DELAY
 
