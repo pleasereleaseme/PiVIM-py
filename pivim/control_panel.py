@@ -20,7 +20,8 @@ COL_RIGHT_INDEX = 15
 
 BACKLIGHT_AUTO_OFF_DELAY = 10
 
-SHUTDOWN_DELAY_COUNT = 0
+SHUTDOWN_DELAY = 30
+SHUTDOWN_DELAY_COUNT = SHUTDOWN_DELAY
 
 def display_config():
     """Sets the display to display_configial values."""
@@ -44,7 +45,7 @@ def clear_screen():
     lcd.clear()
 
     global SHUTDOWN_DELAY_COUNT
-    SHUTDOWN_DELAY_COUNT = 0
+    SHUTDOWN_DELAY_COUNT = SHUTDOWN_DELAY
 
 def message_left_top(message):
     """Sets message at top left."""
@@ -119,12 +120,12 @@ def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
     """"""
     global SHUTDOWN_DELAY_COUNT
 
-    SHUTDOWN_DELAY_COUNT += 1
+    SHUTDOWN_DELAY_COUNT +- 2
 
-    if SHUTDOWN_DELAY_COUNT == 60:
+    if SHUTDOWN_DELAY_COUNT == 0:
         display_off()
         os.system("sudo poweroff")
     else:
         lcd.clear()
-        message_left_middle('Poweroff in {}'.format(SHUTDOWN_DELAY_COUNT))
+        message_left_middle('Poweroff in {}'.format(SHUTDOWN_DELAY_COUNT/2))
         message_left_bottom('Release to cancel')
