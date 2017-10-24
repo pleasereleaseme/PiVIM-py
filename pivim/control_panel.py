@@ -111,7 +111,7 @@ def backlight_countdown():
     time.sleep(BACKLIGHT_AUTO_OFF_DELAY)
     backlight.off()
 
-@touch.on(touch.button)
+@touch.on(touch.BUTTON)
 def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
     """"""
     global SHUTDOWN_DELAY_COUNT
