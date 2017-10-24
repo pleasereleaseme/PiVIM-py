@@ -3,6 +3,7 @@
 Display consists of 3 rows by 16 columns.
 """
 import time
+import os
 from threading import Thread
 try: # Stop pylint genrating and error for libraries not availble on Windows or other OSes
     from dothat import lcd
@@ -19,6 +20,8 @@ COL_RIGHT_INDEX = 15
 
 BACKLIGHT_AUTO_OFF_DELAY = 10
 
+SHUTDOWN_DELAY_COUNT = 0
+
 def display_config():
     """Sets the display to display_configial values."""
     lcd.set_contrast(50)
@@ -26,6 +29,8 @@ def display_config():
     # Backlight is set to be on display_configially but to turn off after a delay
     backlight.hue(0.43)
     backlight_auto_off()
+
+    touch.enable_repeat(True)
 
 def display_off():
     """Turns the display off."""
@@ -105,3 +110,13 @@ def backlight_countdown():
     """Turns the backlight off after the specified period has elapsed"""
     time.sleep(BACKLIGHT_AUTO_OFF_DELAY)
     backlight.off()
+
+@touch.on(touch.button)
+def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
+    """"""
+    global SHUTDOWN_DELAY_COUNT
+
+    SHUTDOWN_DELAY_COUNT += 1
+
+    if SHUTDOWN_DELAY_COUNT == 10:
+        os.system("sudo poweroff")
