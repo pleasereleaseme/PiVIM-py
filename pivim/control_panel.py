@@ -127,5 +127,5 @@ def shutdown_after_delay(channel, event): # pylint: disable=unused-argument
         os.system("sudo poweroff")
     else:
         lcd.clear()
-        message_left_middle('Poweroff in {}'.format(SHUTDOWN_DELAY_COUNT/2))
-        message_left_bottom('Release to cancel')
+        message_left_middle('Off in {}'.format(SHUTDOWN_DELAY_COUNT/2))
+        message_left_bottom('Release = cancel')
