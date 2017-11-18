@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Module for programatically extracting data from ZTE USB Modems.
 
 These devices incorporate an internal web user interface for checking device statistics
