@@ -13,4 +13,7 @@ def upload_temperature_data(access_key, temperature):
                         bucket_key="pivim_{}".format(today), \
                         access_key=access_key, debug_level=2)
 
-    streamer.log("T", temperature)
+    try:
+        streamer.log("T", temperature)
+    except Exception: # pylint: disable=W0703
+        pass
