@@ -4,7 +4,7 @@ import sys
 import time
 #from pivim import mobile_broadband as mb
 #from pivim import control_panel as cp
-#from pivim import data_portal as dp
+from pivim import data_portal as dp
 from pivim import temperature as t
 
 def main(access_key):
@@ -34,7 +34,7 @@ def main(access_key):
             #cp.message_left_middle("N: " + str(latest_temp))
             #cp.message_left_bottom("H: " + str(highest_temp))
 
-            #dp.upload_temperature_data(access_key, latest_temp)
+            dp.upload_temperature_data(access_key, latest_temp)
 
             time.sleep(10)
 
