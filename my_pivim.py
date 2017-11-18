@@ -5,7 +5,7 @@ import time
 #from pivim import mobile_broadband as mb
 #from pivim import control_panel as cp
 #from pivim import data_portal as dp
-#from pivim import temperature as t
+from pivim import temperature as t
 
 def main(access_key):
     """Evolving picture of how all the different code modules will work together"""
@@ -23,9 +23,9 @@ def main(access_key):
             #signalbar = mobile.signalbar
             #network_type = mobile.network_type
 
-            #latest_temp = round(t.read_temp() -0.5)
-            #lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
-            #highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
+            latest_temp = round(t.read_temp() -0.5)
+            lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
+            highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
 
             #cp.clear_screen()
             #cp.message_right_top(network_type)
