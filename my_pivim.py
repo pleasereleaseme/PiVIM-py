@@ -1,7 +1,6 @@
 """DocString"""
 import sys
 import time
-import datetime as dt
 import logging as log
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
@@ -13,7 +12,7 @@ def main(access_key):
 
     log.basicConfig(filename='/home/pi/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    log.debug("Starting up at {}.").format(dt.date.today())
+    log.debug("Starting up")
 
     highest_temp = 0
     lowest_temp = 100
