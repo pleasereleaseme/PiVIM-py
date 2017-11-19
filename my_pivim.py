@@ -2,6 +2,7 @@
 import sys
 import time
 import datetime as dt
+import logging as log
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
@@ -10,7 +11,9 @@ from pivim import temperature as t
 def main(access_key):
     """Evolving picture of how all the different code modules will work together"""
 
-    print("Starting up at {}.").format(dt.date.today())
+    log.basicConfig(filename='my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+    log.debug("Starting up at {}.").format(dt.date.today())
 
     highest_temp = 0
     lowest_temp = 100
