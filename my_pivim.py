@@ -11,7 +11,7 @@ from pivim import temperature as t
 def main(access_key):
     """Evolving picture of how all the different code modules will work together"""
 
-    log.basicConfig(filename='~/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    log.basicConfig(filename='/home/pi/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
     log.debug("Starting up at {}.").format(dt.date.today())
 
