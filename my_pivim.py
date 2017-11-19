@@ -24,6 +24,8 @@ def main(access_key):
     while True:
         try:
             mobile.get_status()
+            log.debug("Signal strength: %s", mobile.signalbar)
+            log.debug("Network type: %s", mobile.network_type)
             signalbar = mobile.signalbar
             network_type = mobile.network_type
 
