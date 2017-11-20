@@ -15,5 +15,7 @@ def upload_temperature_data(access_key, temperature):
                             access_key=access_key, debug_level=2)
 
         streamer.log("T", temperature)
+
+        streamer.flush()
     except Exception: # pylint: disable=W0703
         pass
