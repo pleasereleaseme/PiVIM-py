@@ -43,7 +43,7 @@ def main(access_key):
 
             dp.upload_temperature_data(access_key, latest_temp)
 
-            time.sleep(10)
+            time.sleep(5)
 
         except KeyboardInterrupt:
             cp.display_off()
