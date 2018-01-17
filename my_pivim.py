@@ -1,7 +1,7 @@
 """DocString"""
 import sys
 import time
-import logging
+import logging as log
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
@@ -10,9 +10,9 @@ from pivim import temperature as t
 def main(access_key):
     """Evolving picture of how all the different code modules will work together"""
 
-    log = logging.getLogger()
-    file_handler = logging.FileHandler('/home/pi/PiVIM-py/my_pivim.log')
-    log.addHandler(file_handler)
+    #log = logging.getLogger()
+    #file_handler = logging.FileHandler('/home/pi/PiVIM-py/my_pivim.log')
+    #log.addHandler(file_handler)
     log.basicConfig(level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
     log.debug("Starting up")
