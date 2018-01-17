@@ -11,8 +11,6 @@ import logging
 import json
 import requests
 
-logging.getLogger("requests").setLevel(logging.WARNING)
-
 class MobileBroadband:
     """Class for working with ZTE USB Modems"""
     host = '192.168.0.1'
@@ -30,6 +28,8 @@ class MobileBroadband:
         Includes a dummy data set to ensure values are returned where it's
         not possible to work with the USB modem connected.
         """
+        logging.getLogger("requests").setLevel(logging.WARNING)
+
         if MobileBroadband.is_connected():
 
             # Query string doesn't work if the cmd is split in to shorter chunks using \
