@@ -11,6 +11,8 @@ import logging
 import json
 import requests
 
+logging.getLogger("requests").setLevel(logging.WARNING)
+
 class MobileBroadband:
     """Class for working with ZTE USB Modems"""
     host = '192.168.0.1'
@@ -21,8 +23,6 @@ class MobileBroadband:
         self.signalbar = ""
         self.network_type = ""
         self.network_provider = ""
-
-        logging.getLogger("requests").setLevel(logging.WARNING)
 
     def get_status(self):
         """
