@@ -17,7 +17,7 @@ def main(access_key):
 
     log.debug("Starting up")
 
-    logging.getLogger("requests").setLevel(log.WARNING)
+    logging.getLogger("requests").setLevel(logger.WARNING)
 
     highest_temp = 0
     lowest_temp = 100
