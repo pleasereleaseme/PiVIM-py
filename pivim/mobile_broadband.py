@@ -28,7 +28,6 @@ class MobileBroadband:
         Includes a dummy data set to ensure values are returned where it's
         not possible to work with the USB modem connected.
         """
-        logging.getLogger("requests").setLevel(logging.WARNING)
 
         if MobileBroadband.is_connected():
 

@@ -17,11 +17,9 @@ def main(access_key):
     file_handler.setFormatter(formatter)
     log.addHandler(file_handler)
     
-    #logging.basicConfig(filename='/home/pi/PiVIM-py/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    #logging.getLogger("urllib3").setLevel(logging.WARNING)
 
     log.debug("Starting up")
-
-    logging.getLogger("urllib3").setLevel(logging.WARNING)
 
     highest_temp = 0
     lowest_temp = 100
