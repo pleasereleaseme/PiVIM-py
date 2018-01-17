@@ -13,7 +13,7 @@ def main(access_key):
     #log = logging.getLogger()
     #file_handler = logging.FileHandler('/home/pi/PiVIM-py/my_pivim.log')
     #log.addHandler(file_handler)
-    log.basicConfig(level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    log.basicConfig(filename='/home/pi/PiVIM-py/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
     log.debug("Starting up")
 
