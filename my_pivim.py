@@ -17,7 +17,7 @@ def main(access_key):
     file_handler.setFormatter(formatter)
     log.addHandler(file_handler)
     
-    #logging.getLogger("urllib3").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
 
     log.debug("Starting up")
 
@@ -41,6 +41,7 @@ def main(access_key):
 
             #latest_temp = round(t.read_temp(), -0.5)
             latest_temp = round(t.read_temp(), 1)
+            log.debug("Latest temp: %s", latest_temp)
             lowest_temp = latest_temp if latest_temp < lowest_temp else lowest_temp
             highest_temp = latest_temp if latest_temp > highest_temp else highest_temp
 
