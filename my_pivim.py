@@ -11,9 +11,13 @@ def main(access_key):
     """Evolving picture of how all the different code modules will work together"""
 
     log = logging.getLogger()
+    log.setLevel(logging.DEBUG)
     file_handler = logging.FileHandler('/home/pi/PiVIM-py/my_pivim.log')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(formatter)
     log.addHandler(file_handler)
-    #log.basicConfig(filename='/home/pi/PiVIM-py/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    
+    #logging.basicConfig(filename='/home/pi/PiVIM-py/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
     log.debug("Starting up")
 
