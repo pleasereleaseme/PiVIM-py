@@ -25,9 +25,9 @@ def main(access_key):
     mobile = mb.MobileBroadband()
 
     if mobile.is_connected():
-        log.debug("Connected to Mobile Broadband)")
+        log.debug("Connected to Mobile Broadband")
     else:
-        log.debug("Connected to WiFi)")
+        log.debug("Connected to WiFi")
 
     while True:
         try:
