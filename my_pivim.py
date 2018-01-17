@@ -24,13 +24,13 @@ def main(access_key):
 
     mobile = mb.MobileBroadband()
 
+    if mobile.is_connected():
+        log.debug("Connected to Mobile Broadband)")
+    else:
+        log.debug("Connected to WiFi)")
+
     while True:
         try:
-            if mobile.is_connected():
-                log.debug("Connected to broadband)")
-            else:
-                log.debug("Connected to WiFi)")
-
             mobile.get_status()
             signalbar = mobile.signalbar
             network_type = mobile.network_type
