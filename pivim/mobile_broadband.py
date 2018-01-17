@@ -7,7 +7,6 @@ to get the same data. This module has been tested against the ZTE MF730
 (3G) device on the 3 network. It may also work with the ZTE MF823 (4G)
 device but this has not been tested.
 """
-
 import json
 import requests
 

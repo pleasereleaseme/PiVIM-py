@@ -1,7 +1,7 @@
 """DocString"""
 import sys
 import time
-import logging as log
+import logging
 from pivim import mobile_broadband as mb
 from pivim import control_panel as cp
 from pivim import data_portal as dp
@@ -10,7 +10,10 @@ from pivim import temperature as t
 def main(access_key):
     """Evolving picture of how all the different code modules will work together"""
 
-    log.basicConfig(filename='/home/pi/PiVIM-py/my_pivim.log', level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    log = logging.getLogger()
+    file_handler = logging.FileHandler('/home/pi/PiVIM-py/my_pivim.log')
+    log.addHandler(file_handler)
+    log.basicConfig(level=log.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
     log.debug("Starting up")
 
@@ -23,9 +26,12 @@ def main(access_key):
 
     while True:
         try:
+            if mobile.is_connected():
+                log.debug("Connected to broadband)")
+            else:
+                log.debug("Connected to WiFi)")
+
             mobile.get_status()
-            log.debug("Signal strength: %s", mobile.signalbar)
-            log.debug("Network type: %s", mobile.network_type)
             signalbar = mobile.signalbar
             network_type = mobile.network_type
 
